@@ -1,0 +1,26 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  labels:
+    app: microservice-app-example
+  name: zipkin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: zipkin
+  template:
+    metadata:
+      labels:
+        app: microservice-app-example
+        service: zipkin
+        k8s-app: zipkin
+    spec:
+      containers:
+      - env:
+        image: openzipkin/zipkin
+        name: zipkin
+        ports:
+        - containerPort: 9411
+        - containerPort: 9410
+      restartPolicy: Always
