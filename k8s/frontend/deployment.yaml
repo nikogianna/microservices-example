@@ -32,6 +32,6 @@ spec:
         - containerPort: 8080
         image: nikogianna19/frontend:40e2b9a
       restartPolicy: Always
-      image: nikogianna19/frontend:40e2b9a
+      imagePullPolicy: Always
       - name: regcred
 
