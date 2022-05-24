@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Update SHA
+        run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/_meta
+
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
@@ -30,9 +33,12 @@ jobs:
           context: ./frontend
           # Note: tags has to be all lower-case
           tags: |
-            nikogianna19/frontend:latest
+            nikogianna19/frontend:$(echo $GITHUB_SHA | head -c7)
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/master' }}
+
+      - name: Update deployment file
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image.*|image: nikogianna19/frontend:'${TAG}'|' $GITHUB_WORKSPACE/k8s/frontend/deployment.yaml
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
