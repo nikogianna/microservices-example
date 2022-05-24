@@ -12,12 +12,9 @@ jobs:
 
       - name: Update SHA
         run: |
-        
-         echo $GITHUB_SHA > $GITHUB_WORKSPACE/_meta
          IMG=auth-api
          echo "IMG=${IMG}" >> $GITHUB_ENV
-         OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
-         echo "IMAGE=${OWNER}/${IMG}" >> $GITHUB_ENV
+         echo "IMAGE=nikogianna19/${IMG}" >> $GITHUB_ENV
          echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
@@ -37,7 +34,7 @@ jobs:
           context: ./auth-api
           # Note: tags has to be all lower-case
           tags: |
-            nikogianna19/auth-api:${{ env.GIT_SHA }}
+            ${{ env.IMAGE }}:${{ env.GIT_SHA }}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/master' }}
 
