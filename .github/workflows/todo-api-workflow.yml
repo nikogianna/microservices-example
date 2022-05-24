@@ -2,9 +2,9 @@ name: todo-api-workflow
 on: 
   push:
     paths:
-      - frontend/**
+      - todos-api/**
 jobs:
-  build-frontend-app:
+  build-todos-api:
     runs-on: ubuntu-latest
     #defaults:
     #  run:
