@@ -14,7 +14,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Update SHA
-        run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/_meta
+        run: |
+        
+         echo $GITHUB_SHA > $GITHUB_WORKSPACE/_meta
+         IMG=frontend
+         echo "IMG=${IMG}" >> $GITHUB_ENV
+         OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+         echo "IMAGE=${OWNER}/${IMG}" >> $GITHUB_ENV
+         echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
         id: buildx
@@ -33,7 +40,7 @@ jobs:
           context: ./frontend
           # Note: tags has to be all lower-case
           tags: |
-            nikogianna19/frontend:$GITHUB_SHA
+            ${{ env.IMAGE }}:${{ env.GIT_SHA }}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/master' }}
 
