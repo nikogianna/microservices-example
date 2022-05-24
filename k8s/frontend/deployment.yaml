@@ -30,8 +30,8 @@ spec:
         name: frontend
         ports:
         - containerPort: 8080
-        image: nikogianna19/frontend:9c33173
+        imagePullPolicy: Always
       restartPolicy: Always
-      imagePullPolicy: Always
+      imagePullSecrets: Always
       - name: regcred
 
