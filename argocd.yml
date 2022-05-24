@@ -1,0 +1,432 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2022-05-23T11:23:39Z"
+  generation: 509
+  name: micro-example
+  namespace: argocd
+  resourceVersion: "61294"
+  uid: 54acbcb1-6e9d-4d0f-b0f5-fd29e42aa5d7
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      jsonnet: {}
+      recurse: true
+    path: k8s
+    repoURL: https://github.com/nikogianna/microservices-example
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2022-05-23T15:20:12Z"
+    deployedAt: "2022-05-23T15:20:13Z"
+    id: 5
+    revision: caa1a19373063657c84c9ca9e51f9ef53c9c23df
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T12:01:06Z"
+    deployedAt: "2022-05-24T12:01:08Z"
+    id: 6
+    revision: b17608e9fe3d5b31dc92042d04ac022775328e0e
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T12:07:05Z"
+    deployedAt: "2022-05-24T12:07:06Z"
+    id: 7
+    revision: e3a596856717af297f05a8448c7e7b185492986c
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T12:25:06Z"
+    deployedAt: "2022-05-24T12:25:08Z"
+    id: 8
+    revision: bdbd166277d32adde5493636f2ce793a05e138d4
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T12:31:06Z"
+    deployedAt: "2022-05-24T12:31:06Z"
+    id: 9
+    revision: 737702417704aeba576e762f25a7b6037834243a
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T12:49:06Z"
+    deployedAt: "2022-05-24T12:49:07Z"
+    id: 10
+    revision: f4fdec58df2462bdbfebc2c225fd736793f2e869
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T13:18:36Z"
+    deployedAt: "2022-05-24T13:18:39Z"
+    id: 11
+    revision: 325be263e5cd87045af194dc81a7a103426b0281
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T13:27:33Z"
+    deployedAt: "2022-05-24T13:27:35Z"
+    id: 12
+    revision: 94644fd79add6fb3b3223d2f8b61c023ab0c74a8
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T13:55:06Z"
+    deployedAt: "2022-05-24T13:55:07Z"
+    id: 13
+    revision: 019297132f2ba2186114c35976807c78c4b822c1
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  - deployStartedAt: "2022-05-24T14:37:06Z"
+    deployedAt: "2022-05-24T14:37:08Z"
+    id: 14
+    revision: 67eed9531f4b3783a4119adcdf7fc1b388090f13
+    source:
+      directory:
+        jsonnet: {}
+        recurse: true
+      path: k8s
+      repoURL: https://github.com/nikogianna/microservices-example
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2022-05-24T14:37:09Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 67eed9531f4b3783a4119adcdf7fc1b388090f13
+    phase: Succeeded
+    startedAt: "2022-05-24T14:37:06Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/frontend unchanged
+        name: frontend
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/auth-api unchanged
+        name: auth-api
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/todos-api unchanged
+        name: todos-api
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/users-api unchanged
+        name: users-api
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/zipkin unchanged
+        name: zipkin
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/redis-queue unchanged
+        name: redis-queue
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/auth-api unchanged
+        name: auth-api
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/frontend unchanged
+        name: frontend
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/todos-api unchanged
+        name: todos-api
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/log-message-processor configured
+        name: log-message-processor
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/redis-queue configured
+        name: redis-queue
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/users-api unchanged
+        name: users-api
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/zipkin configured
+        name: zipkin
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.istio.io
+        hookPhase: Running
+        kind: VirtualService
+        message: virtualservice.networking.istio.io/bookinfo unchanged
+        name: bookinfo
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1beta1
+      - group: networking.istio.io
+        hookPhase: Running
+        kind: Gateway
+        message: gateway.networking.istio.io/bookinfo-gateway unchanged
+        name: bookinfo-gateway
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1beta1
+      revision: 67eed9531f4b3783a4119adcdf7fc1b388090f13
+      source:
+        directory:
+          jsonnet: {}
+          recurse: true
+        path: k8s
+        repoURL: https://github.com/nikogianna/microservices-example
+        targetRevision: HEAD
+  reconciledAt: "2022-05-24T14:43:04Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: Service
+    name: auth-api
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: frontend
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: redis-queue
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: todos-api
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: users-api
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: zipkin
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: auth-api
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: frontend
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: log-message-processor
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: redis-queue
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: todos-api
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: users-api
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: zipkin
+    namespace: default
+    status: Synced
+    version: v1
+  - group: networking.istio.io
+    kind: Gateway
+    name: bookinfo-gateway
+    namespace: default
+    status: Synced
+    version: v1beta1
+  - group: networking.istio.io
+    kind: VirtualService
+    name: bookinfo
+    namespace: default
+    status: Synced
+    version: v1beta1
+  sourceType: Directory
+  summary:
+    images:
+    - docker.io/istio/proxyv2:1.13.4
+    - nikogianna19/auth-api:21c18b1
+    - nikogianna19/frontend:8f21d03
+    - nikogianna19/log-message-processor:cdd2969
+    - nikogianna19/todos-api:12c546e
+    - nikogianna19/users-api:e3aa611
+    - openzipkin/zipkin
+    - redis
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        directory:
+          jsonnet: {}
+          recurse: true
+        path: k8s
+        repoURL: https://github.com/nikogianna/microservices-example
+        targetRevision: HEAD
+    revision: 67eed9531f4b3783a4119adcdf7fc1b388090f13
+    status: Synced
