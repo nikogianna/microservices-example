@@ -26,7 +26,7 @@ spec:
           value: http://users-api:8083
         - name: ZIPKIN_URL
           value: http://zipkin:9411/api/v2/spans          
-        image: nikogianna19/auth-api:5e8e9b5
+        image: nikogianna19/auth-api:1ce494c
         name: auth-api
         ports:
         - containerPort: 8081
