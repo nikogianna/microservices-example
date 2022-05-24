@@ -15,7 +15,7 @@ import (
 
 var (
 	// ErrHttpGenericMessage that is returned in general case, details should be logged in such case
-	ErrHttpGenericMessage = echo.NewHTTPError(http.StatusInternalServerError, "something went wrong, please try again later")
+	ErrHttpGenericMessage = echo.NewHTTPError(http.StatusInternalServerError, "Everything went wrong, please try again later")
 
 	// ErrWrongCredentials indicates that login attempt failed because of incorrect login or password
 	ErrWrongCredentials = echo.NewHTTPError(http.StatusUnauthorized, "Username or Password is invalid. Whhhy?")
@@ -39,6 +39,7 @@ func main() {
 			"admin_admin": nil,
 			"johnd_foo":   nil,
 			"janed_ddd":   nil,
+			"niko_niko":   nil,
 		},
 	}
 

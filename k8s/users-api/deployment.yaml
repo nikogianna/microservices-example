@@ -24,7 +24,7 @@ spec:
           value: "8083"
         - name: SPRING_ZIPKIN_BASE_URL
           value: http://zipkin:9411
-        image: nikogianna19/users-api
+        image: nikogianna19/users-api:e3aa611
         name: users-api
         ports:
         - containerPort: 8083
