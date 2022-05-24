@@ -27,7 +27,7 @@ spec:
         - name: ZIPKIN_URL
           value: http://zipkin:9411/api/v1/spans
           
-        image: nikogianna19/log-message-processor
+        image: nikogianna19/log-message-processor:cdd2969
         name: log-message-processor
         #imagePullPolicy: Never
       restartPolicy: Always
