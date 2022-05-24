@@ -1,8 +1,8 @@
-name: frontend-workflow
+name: log-message-processor-workflow
 on: 
   push:
     paths:
-      - frontend/**
+      - log-message-processor/**
 jobs:
   build-frontend-app:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
 
       - name: Update SHA
         run: |
-         IMG=frontend
+         IMG=log-message-processor
          OWNER=nikogianna19
          echo "IMG=${IMG}" >> $GITHUB_ENV
          echo "OWNER=${OWNER}" >> $GITHUB_ENV
@@ -33,16 +33,16 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: ./frontend
+          context: ./log-message-processor
           # Note: tags has to be all lower-case
           tags: |
-            nikogianna19/frontend:${{ env.GIT_SHA }}
+            nikogianna19/log-message-processor:${{ env.GIT_SHA }}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Update deployment file
         run: |
-          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image:\ nikogianna19.*|image:\ nikogianna19/frontend:'${TAG}'|g' $GITHUB_WORKSPACE/k8s/frontend/deployment.yaml
+          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image:\ nikogianna19.*|image:\ nikogianna19/log-message-processor:'${TAG}'|g' $GITHUB_WORKSPACE/k8s/log-message-processor/deployment.yaml
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
