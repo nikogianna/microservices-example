@@ -69,7 +69,7 @@ class TodoController {
                 items: {
                     '1': {
                         id: 1,
-                        content: "Create new todo",
+                        content: "Create a new task",
                     },
                     '2': {
                         id: 2,
