@@ -46,7 +46,7 @@ jobs:
 
       - name: Update deployment file
         run: |
-          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image:.*|image:\ nikogianna19/frontend:'${TAG}'|g' $GITHUB_WORKSPACE/k8s/frontend/deployment.yaml
+          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image:\ nikogianna19.*|image:\ nikogianna19/frontend:'${TAG}'|g' $GITHUB_WORKSPACE/k8s/frontend/deployment.yaml
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
