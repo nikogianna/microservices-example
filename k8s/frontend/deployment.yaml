@@ -26,12 +26,12 @@ spec:
           value: http://todos-api:8082
         - name: ZIPKIN_URL
           value: http://zipkin:9411/api/v2/spans
-        image: nikogianna19/frontend
+        image: nikogianna19/frontend:40e2b9a
         name: frontend
         ports:
         - containerPort: 8080
-        imagePullPolicy: Always
+        image: nikogianna19/frontend:40e2b9a
       restartPolicy: Always
-      imagePullSecrets:
+      image: nikogianna19/frontend:40e2b9a
       - name: regcred
 
