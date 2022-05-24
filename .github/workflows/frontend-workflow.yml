@@ -38,7 +38,7 @@ jobs:
           push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Update deployment file
-        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image.*|image: nikogianna19/frontend:'${TAG}'|' $GITHUB_WORKSPACE/k8s/frontend/deployment.yaml
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image.*|image: nikogianna19/frontend:'${TAG}'|g' $GITHUB_WORKSPACE/k8s/frontend/deployment.yaml
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
