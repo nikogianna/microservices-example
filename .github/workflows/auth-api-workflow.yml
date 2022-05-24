@@ -1,0 +1,54 @@
+name: auth-api-workflow
+on: 
+  push:
+    paths:
+      - auth-api/**
+jobs:
+  build-auth-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Update SHA
+        run: |
+        
+         echo $GITHUB_SHA > $GITHUB_WORKSPACE/_meta
+         IMG=auth-api
+         echo "IMG=${IMG}" >> $GITHUB_ENV
+         OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+         echo "IMAGE=${OWNER}/${IMG}" >> $GITHUB_ENV
+         echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build image and push to Docker Hub and GitHub Container Registry
+        uses: docker/build-push-action@v2
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./auth-api
+          # Note: tags has to be all lower-case
+          tags: |
+            nikogianna19/auth-api:${{ env.GIT_SHA }}
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/master' }}
+
+      - name: Update deployment file
+        run: |
+          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|image:\ nikogianna19.*|image:\ nikogianna19/auth-api:'${TAG}'|g' $GITHUB_WORKSPACE/k8s/auth-api/deployment.yaml
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
+          
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
