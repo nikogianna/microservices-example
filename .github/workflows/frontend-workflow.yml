@@ -40,7 +40,7 @@ jobs:
           context: ./frontend
           # Note: tags has to be all lower-case
           tags: |
-            ${{ env.IMAGE }}:${{ env.GIT_SHA }}
+            nikogianna19/frontend:${{ env.GIT_SHA }}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/master' }}
 
