@@ -54,7 +54,7 @@ if __name__ == '__main__':
             ):
                 log_message(message)
         except Exception as e:
-            print('did not send dataa to Zipkin: {}'.format(e))
+            print('did not send data to Zipkin: {}'.format(e))
             log_message(message)
 
 
