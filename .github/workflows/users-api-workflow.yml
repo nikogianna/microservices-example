@@ -1,4 +1,4 @@
-name: frontend-workflow
+name: users-api-workflow
 on: 
   push:
     paths:
