@@ -33,7 +33,7 @@ jobs:
           context: ./frontend
           # Note: tags has to be all lower-case
           tags: |
-            nikogianna19/frontend:$(echo $GITHUB_SHA | head -c7)
+            nikogianna19/frontend:${{echo $GITHUB_SHA | head -c7}}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/master' }}
 
